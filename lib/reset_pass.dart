@@ -54,13 +54,12 @@ class Reset_pass extends StatelessWidget {
                 ),
                 ////////////////////
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    SizedBox(height: 31),
+                    SizedBox(height: 35),
                     TextFieldPass(hint: 'Password'),
+                    SizedBox(height: 15),
                     TextFieldPass(hint: 'Confirm Password'),
-                    SizedBox(height: 31),
+                    SizedBox(height: 35),
                   ],
                 ),
                 Container(
@@ -102,36 +101,43 @@ class TextFieldPass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        border: Border.all(
-          color: Colors.black38,
-          width: 1.0,
-        ),
-      ),
-      child: TextFormField(
-        validator: (value) {
-          if(value == null || value.isEmpty){
-            return 'Please enter new password';
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          hintText: hint,
-          labelText: hint,
-          labelStyle: TextStyle(
-            color: Colors.black,
+    return Stack(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 20),
+          height: 55,
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            border: Border.all(
+              color: Colors.black38,
+              width: 1.0,
+            ),
           ),
         ),
-        cursorColor: Colors.deepPurpleAccent,
-        autofocus: false,
-        obscureText: true,
-      ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 40),
+          child: TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter new password';
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              hintText: hint,
+              labelText: hint,
+              labelStyle: TextStyle(
+                color: Colors.black,
+              ),
+              border: InputBorder.none,
+            ),
+            cursorColor: Colors.deepPurple,
+            autofocus: false,
+            obscureText: true,
+          ),
+        ),
+      ],
     );
   }
 }
-

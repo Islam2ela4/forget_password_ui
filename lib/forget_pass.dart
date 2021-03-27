@@ -67,33 +67,43 @@ class Forget_pass extends StatelessWidget {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(
-                          color: Colors.black38,
-                          width: 1.0,
-                        ),
-                      ),
-                      child: TextFormField(
-                        validator: (value) {
-                          if(!_emailValidator.hasMatch(value)){
-                            return 'Email is not valid';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: "Email Address",
-                          labelText: "Email Address",
-                          labelStyle: TextStyle(
-                            color: Colors.black,
+                    Stack(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 30, horizontal: 20),
+                          height: 55,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(
+                              color: Colors.black38,
+                              width: 1.0,
+                            ),
                           ),
                         ),
-                        cursorColor: Colors.deepPurpleAccent,
-                      ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 27, horizontal: 40),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (!_emailValidator.hasMatch(value)) {
+                                return 'Email is not valid';
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                                hintText: "Email Address",
+                                labelText: "Email Address",
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                ),
+                                border: InputBorder.none,
+                            ),
+                            cursorColor: Colors.deepPurple,
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
                       width: double.infinity,
@@ -101,23 +111,27 @@ class Forget_pass extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Colors.deepPurpleAccent
-                      ),
+                          color: Colors.deepPurpleAccent),
                       child: RaisedButton(
-                        child: Text("Confirm Mail", style: TextStyle(fontSize: 17),),
+                        child: Text(
+                          "Confirm Mail",
+                          style: TextStyle(fontSize: 17),
+                        ),
                         color: Colors.deepPurpleAccent,
                         elevation: 0,
                         textColor: Colors.white,
                         hoverColor: Colors.deepPurpleAccent,
                         onPressed: () {
-                          if(_formKey.currentState.validate()){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                              return Verfication_code();
-                            },));
+                          if (_formKey.currentState.validate()) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) {
+                                return Verfication_code();
+                              },
+                            ));
                           }
                         },
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -128,35 +128,45 @@ class Verfication_code extends StatelessWidget {
 class TextFieldCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 30, horizontal: 5),
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      width: 55,
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        border: Border.all(
-          color: Colors.black38,
-          width: 1.0,
-        ),
-      ),
-      child: TextFormField(
-        keyboardType: TextInputType.number,
-        validator: (value) {
-          if(value == null || value.isEmpty){
-            return '';
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          hintText: '---',
-          labelStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 25,
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: 55,
+          height: 55,
+          margin: EdgeInsets.symmetric(vertical: 30, horizontal: 5),
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            border: Border.all(
+              color: Colors.black38,
+              width: 1.0,
+            ),
           ),
         ),
-        cursorColor: Colors.deepPurpleAccent,
-      ),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 35, horizontal: 5),
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          width: 55,
+          child: TextFormField(
+            keyboardType: TextInputType.number,
+            validator: (value) {
+              if(value == null || value.isEmpty){
+                return '';
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              hintText: '---',
+              labelStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+              border: InputBorder.none,
+            ),
+            cursorColor: Colors.deepPurpleAccent,
+          ),
+        ),
+      ],
     );
   }
 }
